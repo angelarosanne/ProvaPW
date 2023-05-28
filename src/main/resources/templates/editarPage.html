@@ -2,16 +2,19 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Edição de Postagens</title>
+    <title>Edição de Produtos</title>
 </head>
 <body>
 <h1> Página de Edição</h1>
-<form method="post" th:action="@{/doSalvar}" th:object="${postagem}">
+<form method="post" th:action="@{/doSalvar}" th:object="${produto}">
     <input type="hidden" th:field="*{id}">
-    Autor: <input type="text" th:field="*{autor}"> <br />
-    Mensagem: <input type="text" th:field="*{mensagem}"> <br />
-    Título: <input type="text" th:field="*{titulo}"> <br/>
-    Destinatário: <input type="text" th:field="*{destinatario}"> <br />
+    Imagem: <input type="file" th:field="*{imagemURI}"> <br />
+    Nome: <input type="text" th:field="*{nome}"> <br />
+    Preço: <input type="text" th:field="*{preco}"> <br/>
+    Tipo: <input type="text" th:field="*{tipo}"> <br />
+    Material: <input type="text" th:field="*{material}"> <br />
+    Tamanho: <input type="text" th:field="*{tamanho}"> <br />
+    Cor: <input type="text" th:field="*{cor}"> <br />
     <button type="submit">Salvar</button>
 </form>
 

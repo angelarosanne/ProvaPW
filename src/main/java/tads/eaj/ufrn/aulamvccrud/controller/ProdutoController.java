@@ -9,6 +9,7 @@ import tads.eaj.ufrn.aulamvccrud.model.Produto;
 import tads.eaj.ufrn.aulamvccrud.service.ProdutoService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class ProdutoController {
@@ -28,56 +29,43 @@ public class ProdutoController {
         return "index.html";
     }
 
-//    @GetMapping("/cadastrarPage")
-//    public String getCadastrarPage(Model model){
-//        Produto p = new Produto();
-//        model.addAttribute("postagem", p);
-//        return "cadastrarPage";
-//    }
-//
-//    @PostMapping("/adicionarCarrinho")
-//    public String doAdicionarCarrinho(@ModelAttribute @Valid Produto p, Errors errors){
-//        if (errors.hasErrors()){
-//            return "index";
-//        }else{
-//            service.save(p);
-//            return "redirect:/index";
-//        }
-//    }spring:
-//  datasource:
-//    url: jdbc:postgresql://${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}?serverTimezone=UTC
-//    username: ${DATABASE_USERNAME}
-//    password: ${DATABASE_PASSWORD}
-//    driver-class-name: org.postgresql.Driver
-//  jpa:
-//    show-sql: true
-//    properties:
-//      hibernate:
-//        dialect: org.hibernate.dialect.PostgreSQLDialect
-//    generate-ddl: true
-//    hibernate:
-//      ddl-auto: update
-//    @GetMapping("/editarPage/{id}")
-//    public String getEditarPage(@PathVariable(name = "id") String id, Model model){
-//
-//        Optional<Produto> p = service.findById(id);
-//        if (p.isPresent()){
-//            model.addAttribute("postagem", p.get());
-//        }else{
-//            return "redirect:/index";
-//        }
-//
-//        return "editarPage";
-//    }
-//
-//    @GetMapping("/deletar/{id}")
-//    public String doDeletar(@PathVariable(name = "id") String id){
-//        Optional<Produto> postagem = service.findById(id);
-//        if (postagem.isPresent()) {
-//            service.delete(id);
-//        }
-//        return "redirect:/index";
-//    }
+    @GetMapping("/cadastrarPage")
+    public String getCadastrarPage(Model model){
+        Produto p = new Produto();
+        model.addAttribute("produto", p);
+        return "cadastrarPage";
+    }
+    @PostMapping("/doSalvar")
+    public String doSalvar(@ModelAttribute @Valid Produto p, Errors errors){
+        if (errors.hasErrors()){
+            return "cadastrarPage";
+        }else{
+            service.save(p);
+            return "redirect:/index";
+        }
+    }
+
+    @GetMapping("/editarPage/{id}")
+    public String getEditarPage(@PathVariable(name = "id") String id, Model model){
+
+        Optional<Produto> p = service.findById(id);
+        if (p.isPresent()){
+            model.addAttribute("produto", p.get());
+        }else{
+            return "redirect:/index";
+        }
+
+        return "editarPage";
+    }
+
+    @GetMapping("/deletar/{id}")
+    public String doDeletar(@PathVariable(name = "id") String id){
+        Optional<Produto> produto = service.findById(id);
+        if (produto.isPresent()) {
+            service.delete(id);
+        }
+        return "redirect:/index";
+    }
 }
 
 

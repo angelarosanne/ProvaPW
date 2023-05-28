@@ -6,5 +6,5 @@ import tads.eaj.ufrn.aulamvccrud.model.Produto;
 import java.util.List;
 
 public interface ProdutoRepository extends JpaRepository<Produto, String> {
-      List<Produto> findProdutoById(Long id);
+      List<Produto> findProdutoById(String id);
 }

@@ -2,27 +2,37 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Cadastro de Postagens</title>
+    <title>Cadastro de Produtos</title>
 </head>
 <body>
 <h1> Página de Cadastro</h1>
-<form method="post" th:action="@{/doSalvar}" th:object="${postagem}">
+<form method="post" th:action="@{/doSalvar}" th:object="${produto}" >
 
-    Autor: <input type="text" th:field="*{autor}">
-    <p th:if="${#fields.hasErrors('autor')}" th:errors="*{autor}"></p>
+    Imagem: <input type="file" name="image" accept="image/png, image/jpeg" /></p>
     <br />
 
-
-    Mensagem: <input type="text" th:field="*{mensagem}">
-    <p th:if="${#fields.hasErrors('mensagem')}" th:errors="*{mensagem}"></p>
+    Nome: <input type="text" th:field="*{nome}">
+    <p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p>
     <br />
 
-    Título: <input type="text" th:field="*{titulo}">
-    <p th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"></p>
+    Preço: <input type="text" th:field="*{preco}">
+    <p th:if="${#fields.hasErrors('preco')}" th:errors="*{preco}"></p>
     <br />
 
-    Destinatário: <input type="text" th:field="*{destinatario}">
-    <p th:if="${#fields.hasErrors('destinatario')}" th:errors="*{destinatario}"></p>
+    Tipo: <input type="text" th:field="*{tipo}">
+    <p th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}"></p>
+    <br />
+
+    Material: <input type="text" th:field="*{material}">
+    <p th:if="${#fields.hasErrors('material')}" th:errors="*{material}"></p>
+    <br />
+
+    Tamanho: <input type="text" th:field="*{tamanho}">
+    <p th:if="${#fields.hasErrors('tamanho')}" th:errors="*{tamanho}"></p>
+    <br />
+
+    Cor: <input type="text" th:field="*{cor}">
+    <p th:if="${#fields.hasErrors('cor')}" th:errors="*{cor}"></p>
     <br />
     <button type="submit">Cadastrar</button>
 </form>

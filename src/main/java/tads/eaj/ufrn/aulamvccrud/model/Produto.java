@@ -1,10 +1,7 @@
 package tads.eaj.ufrn.aulamvccrud.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
@@ -23,7 +20,7 @@ public class Produto {
     @NotBlank
     @Size(max = 20, min = 4)
     String nome;
-    @NotBlank
+    @NotNull
     Float preco;
     String tipo;
     String material;
